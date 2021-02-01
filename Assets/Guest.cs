@@ -28,6 +28,7 @@ public class Guest : MonoBehaviour
     
     public TextMeshProUGUI textObj;
     public Image image, faceImage;
+    public GameObject textPanel;
 
     public bool isBeingDestroyed;
 
@@ -49,6 +50,7 @@ public class Guest : MonoBehaviour
     void Awake()
     {
         faceImage = GetComponent<Image>();
+        faceImage.material = Instantiate(faceImage.material);
     }
     void Start()
     {
@@ -91,6 +93,7 @@ public class Guest : MonoBehaviour
 
     public void Configure(float disgruntledTime)
     {
+        textPanel.SetActive(true);
         textObj.text = demandMessage;
         image.transform.localScale = Vector3.zero;
         image.transform.DOScale(Vector3.one, 1f);

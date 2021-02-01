@@ -5,6 +5,8 @@ using System.Net.Mime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
+
 
 [System.Serializable]
 public enum GameState
@@ -152,7 +154,13 @@ public class GameManager : MonoBehaviour
 
     public void ALessBadGame()
     {
-        Application.OpenURL("http://escapeacademygame.com");
+        string url = "http://escapeacademygame.com";
+#if !UNITY_WEBGL
+        Application.OpenURL(url);
+#elif UNITY_WEBGL
+        openWindow(url);
+#endif
+        
     }
 
     void StartRound(RoundData round)
@@ -179,4 +187,6 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    [DllImport("__Internal")]
+    private static extern void openWindow(string url); 
 }

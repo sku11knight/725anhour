@@ -94,6 +94,7 @@ MonoBehaviour:
   textObj: {fileID: 2733042338449234567}
   image: {fileID: 5145233482816451558}
   faceImage: {fileID: 1994491484174176488}
+  textPanel: {fileID: 6054307898870157185}
   isBeingDestroyed: 0
   rect: {fileID: 0}
   isHovered: 0
